@@ -30,7 +30,7 @@
       set -g status-left-length 30
 
       # right: directory, hostname, time
-      set -g status-right "#[fg=#B4B4B4]#{pane_current_path}  #[fg=#FF8C64]#{host}  #[bg=#FF8C64,fg=#000000] %H:%M:%S "
+      set -g status-right "#[fg=#B4B4B4]#{pane_current_path}  #[fg=#FF8C64]#{host}  #[bg=#FF8C64,fg=#000000] %H:%M "
       set -g status-right-length 200
 
       # windows
