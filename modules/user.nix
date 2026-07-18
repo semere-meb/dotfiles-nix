@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userVars, ... }:
 
 let
   cfg = config.dotfiles.user;
@@ -9,7 +9,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.users.semere = {
+    users.users."${userVars.username}" = {
       isNormalUser = true;
       extraGroups = [
         "wheel"
@@ -17,9 +17,9 @@ in
       ];
     };
 
-    home-manager.users.semere = {
-      home.username = "semere";
-      home.homeDirectory = "/home/semere";
+    home-manager.users."${userVars.username}" = {
+      home.username = userVars.username;
+      home.homeDirectory = "/home/${userVars.username}";
       home.stateVersion = "26.05";
     };
   };

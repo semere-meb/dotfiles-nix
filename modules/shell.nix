@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userVars, ... }:
 
 let
   cfg = config.dotfiles.shell;
@@ -22,19 +22,19 @@ in
       opencode
     ];
 
-    home-manager.users.semere = {
+    home-manager.users."${userVars.username}" = {
       programs.git = {
         enable = true;
         settings = {
           user = {
-            name = "Semere M. Mebrahtom";
-            email = "semere.meharena1@gmail.com";
+            name = userVars.fullName;
+            email = userVars.email;
           };
           commit.gpgsign = true;
           gpg.program = "gpg";
         };
         signing = {
-          key = "451054EEC0D2AFD1741D4E6A7FC937214DF30488";
+          key = userVars.gpgKey;
           signByDefault = true;
         };
       };

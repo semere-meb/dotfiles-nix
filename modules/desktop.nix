@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, userVars, ... }:
 
 let
   cfg = config.dotfiles.desktop;
@@ -39,7 +39,7 @@ in
       tor-browser
     ];
 
-    home-manager.users.semere = {
+    home-manager.users."${userVars.username}" = {
       programs.foot = {
         enable = true;
         settings = {
