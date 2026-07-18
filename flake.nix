@@ -16,15 +16,20 @@
   let
     lib = nixpkgs.lib;
     userVars = import ./vars.nix;
-  in
-  {
-    nixosConfigurations = {
-      nabro = lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit userVars; };
-        modules = [
-          ./hosts/nabro/configuration.nix
 
+    hostsDir = ./hosts;
+    hostNames = builtins.attrNames (
+      lib.filterAttrs (name: type: type == "directory") (builtins.readDir hostsDir)
+    );
+
+    nixosConfigurations = lib.genAttrs hostNames (name:
+      let
+        hostConfig = import (./hosts + "/${name}");
+      in
+      lib.nixosSystem {
+        system = hostConfig.system;
+        specialArgs = { inherit userVars; };
+        modules = [ hostConfig.configModule ] ++ [
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -35,7 +40,10 @@
             };
           }
         ];
-      };
-    };
+      }
+    );
+  in
+  {
+    inherit nixosConfigurations;
   };
 }
