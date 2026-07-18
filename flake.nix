@@ -18,24 +18,23 @@
   in
   {
     nixosConfigurations = {
-      sys = lib.nixosSystem {
+      nabro = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-              ./hosts/sys/configuration.nix
-              ./hosts/sys/hardware-configuration.nix
+          ./hosts/nabro/configuration.nix
 
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
 
-                  users.him = import ./home/him.nix;
 
-                  backupFileExtension = "backup";
-                };
-              }
-            ];
+
+              backupFileExtension = "backup";
+            };
+          }
+        ];
       };
     };
   };
