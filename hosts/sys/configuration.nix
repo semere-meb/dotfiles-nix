@@ -61,19 +61,14 @@
     gnupg
     pass
     p7zip
-    yazi
     wmenu
     fnott
 
     btop
-
-    wlock
     helix
     foot
     firefox
-
-    mpv
-    yt-dlp
+    tor-browser
   ];
 
   fonts.packages = with pkgs; [
@@ -92,12 +87,6 @@
     "nix-command"
     "flakes"
   ];
-
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryPackage = pkgs.pinentry-curses;
-  };
 
   system.stateVersion = "26.05";
 

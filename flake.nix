@@ -2,7 +2,9 @@
   description = "NixOS system flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-26.05";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -12,22 +14,15 @@
 
   outputs = { self, nixpkgs, home-manager, ... }:
   let
-    system = "x86_64-linux";
-
-    hosts = [ "sys" ];
-    # hosts = builtins.attrNames (builtins.readDir ./hosts);
+    lib = nixpkgs.lib;
   in
   {
-    nixosConfigurations =
-      builtins.listToAttrs (
-        map (host: {
-          name = host;
-          value = nixpkgs.lib.nixosSystem {
-            inherit system;
-
-            modules = [
-              ./hosts/${host}/configuration.nix
-              ./hosts/${host}/hardware-configuration.nix
+    nixosConfigurations = {
+      sys = lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+              ./hosts/sys/configuration.nix
+              ./hosts/sys/hardware-configuration.nix
 
               home-manager.nixosModules.home-manager
               {
@@ -41,8 +36,7 @@
                 };
               }
             ];
-          };
-        }) hosts
-      );
+      };
+    };
   };
 }
