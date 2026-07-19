@@ -35,7 +35,14 @@
 
   hardware.graphics.enable = true;
   security.polkit.enable = true;
+  programs.dconf.enable = true;
   security.pam.services.swaylock = { };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
 
   services.getty.autologinUser = "${userVars.username}";
 
@@ -54,6 +61,20 @@
   ];
 
   home-manager.users."${userVars.username}" = {
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Adwaita-dark";
+        package = pkgs.gnome-themes-extra;
+      };
+      gtk3.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+      gtk4.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+    };
+
     programs.foot = {
       enable = true;
       settings = {
