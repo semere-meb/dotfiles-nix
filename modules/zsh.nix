@@ -31,9 +31,9 @@
         fi
 
         # Automatically start dwl on TTY 1
-        if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-          exec dwl
-        fi
+        # if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+        #   exec dwl
+        # fi
       '';
 
       history = {

@@ -38,28 +38,44 @@
   programs.dconf.enable = true;
   security.pam.services.swaylock = { };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+    };
+  };
+
   qt = {
     enable = true;
     platformTheme = "gnome";
     style = "adwaita-dark";
   };
 
-  services.getty.autologinUser = "${userVars.username}";
+  # services.getty.autologinUser = "${userVars.username}";
 
   environment.systemPackages = with pkgs; [
     pamixer
     brightnessctl
     wl-clipboard
-    wmenu
+    fuzzel
     fnott
     foot
     tor-browser
-    grim
-    slurp
+    # grim
+    # slurp
     wlopm
   ];
 
   home-manager.users."${userVars.username}" = {
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+
     gtk = {
       enable = true;
       theme = {

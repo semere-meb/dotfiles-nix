@@ -118,7 +118,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "foot", NULL };
 static const char *browsercmd[] = { "zen-beta", NULL };
-static const char *menucmd[] = { "wmenu-run", NULL };
+static const char *menucmd[] = { "fuzzel", NULL };
 
 static const char *volup[] = { "pamixer", "-i", "5", NULL };
 static const char *voldown[] = { "pamixer", "-d", "5", NULL };
@@ -136,7 +136,7 @@ const Key keys[] = {
 
 	{ 0, XF86XK_MonBrightnessUp,   spawn, {.v = brightup} },
 	{ 0, XF86XK_MonBrightnessDown, spawn, {.v = brightdown} },
-	{ 0,                         XKB_KEY_Print,       spawn,            SHCMD("grim -g \"$(slurp)\" - | wl-copy") },
+	/* { 0,                         XKB_KEY_Print,       spawn,            SHCMD("grim -g \"$(slurp)\" - | wl-copy") }, */
 
 	{ MODKEY,                    XKB_KEY_p,           spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_w,           spawn,            {.v = browsercmd} },

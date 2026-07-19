@@ -25,6 +25,8 @@ allModules
       self.nixosModules.zsh
       self.nixosModules.helix
       self.nixosModules.zen-browser
+      self.nixosModules.niri
+      self.nixosModules.greetd
     ];
   };
 
