@@ -20,6 +20,7 @@ in
       ty
       nil
       nixd
+      nixfmt
     ];
   };
 }

@@ -1,4 +1,10 @@
-{ config, lib, pkgs, userVars, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userVars,
+  ...
+}:
 
 let
   cfg = config.dotfiles.zsh;
@@ -73,7 +79,7 @@ in
       };
 
       programs.starship = {
-        
+
         enable = true;
         enableZshIntegration = true;
 
@@ -139,17 +145,24 @@ in
 
           python = {
             style = "bold yellow";
-            format = "[$symbol$version( \($virtualenv\))]($style) ";
-            symbol = "🐍 ";
+            format = "[$symbol( \($virtualenv\))]($style) ";
+            symbol = " ";
             detect_extensions = [ "py" ];
-            detect_files = [ "pyproject.toml" "requirements.txt" "uv.lock" ];
+            detect_files = [
+              "pyproject.toml"
+              "requirements.txt"
+              "uv.lock"
+            ];
           };
 
           c = {
             style = "bold dimmed white";
             format = "[$symbol($version(-$name))]($style) ";
             symbol = " ";
-            detect_extensions = [ "c" "h" ];
+            detect_extensions = [
+              "c"
+              "h"
+            ];
           };
 
           rust = {
@@ -176,7 +189,7 @@ in
           package.disabled = true;
           battery.disabled = true;
         };
-  
+
       };
 
       programs.zoxide = {

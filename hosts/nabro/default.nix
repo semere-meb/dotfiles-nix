@@ -15,6 +15,7 @@
       dev.enable = true;
       shell.enable = true;
       zsh.enable = true;
+      helix.enable = true;
     };
   };
 }

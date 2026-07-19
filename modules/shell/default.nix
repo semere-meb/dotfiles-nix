@@ -55,17 +55,7 @@ in
         pinentry.package = pkgs.pinentry-qt;
       };
 
-      programs.helix = {
-        enable = true;
-        defaultEditor = true;
-        settings = {
-          theme = "ayu_dark";
-          editor = {
-            line-number = "relative";
-            lsp.display-messages = true;
-          };
-        };
-      };
+
     };
   };
 }
