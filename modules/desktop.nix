@@ -23,7 +23,14 @@ in
 
     fonts.packages = with pkgs; [
       nerd-fonts.jetbrains-mono
+      noto-fonts
+      noto-fonts-color-emoji
     ];
+
+    fonts.fontconfig.defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font" "Noto Sans Mono" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
 
     hardware.graphics.enable = true;
     security.polkit.enable = true;
@@ -44,7 +51,7 @@ in
         enable = true;
         settings = {
           main = {
-            font = "JetBrainsMono Nerd Font:size=11";
+            font = "JetBrainsMono Nerd Font:size=13";
           };
         };
       };
