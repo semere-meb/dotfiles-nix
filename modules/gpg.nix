@@ -16,7 +16,10 @@
   home-manager.users."${userVars.username}" = {
     services.gpg-agent = {
       enable = true;
-      defaultCacheTtl = 1800;
+      defaultCacheTtl = 7200;
+      defaultCacheTtlSsh = 7200;
+      maxCacheTtl = 28800;
+      maxCacheTtlSsh = 28800;
       enableSshSupport = true;
       pinentry.package = pkgs.pinentry-qt;
     };

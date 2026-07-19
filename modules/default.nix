@@ -5,7 +5,7 @@ let
   ) (builtins.attrNames (builtins.readDir ./.));
 
   allModules = builtins.listToAttrs (
-    builtins.map (entry: {
+    map (entry: {
       name = lib.strings.removeSuffix ".nix" entry;
       value = ./. + "/${entry}";
     }) moduleDirectoryList
