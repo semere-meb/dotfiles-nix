@@ -7,11 +7,6 @@
 }:
 
 {
-  programs.dwl.enable = true;
-  programs.dwl.package = pkgs.dwl.override {
-    configH = ../hosts/nabro/dwl-config.h;
-  };
-
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -54,7 +49,7 @@
     style = "adwaita-dark";
   };
 
-  # services.getty.autologinUser = "${userVars.username}";
+  services.getty.autologinUser = "${userVars.username}";
 
   environment.systemPackages = with pkgs; [
     pamixer
@@ -63,10 +58,6 @@
     fuzzel
     libnotify
     fnott
-    foot
-    tor-browser
-    # grim
-    # slurp
     wlopm
   ];
 
@@ -150,7 +141,6 @@
         night = 4000;
       };
     };
-
 
   };
 }

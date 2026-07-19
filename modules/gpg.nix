@@ -10,7 +10,7 @@
   environment.systemPackages = with pkgs; [
     gnupg
     pass
-    pinentry-qt
+    pinentry-gnome3
   ];
 
   home-manager.users."${userVars.username}" = {
@@ -21,7 +21,7 @@
       maxCacheTtl = 28800;
       maxCacheTtlSsh = 28800;
       enableSshSupport = true;
-      pinentry.package = pkgs.pinentry-qt;
+      pinentry.package = pkgs.pinentry-gnome3;
     };
   };
 }

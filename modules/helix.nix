@@ -84,7 +84,7 @@
 
           smart-tab = {
             enable = true;
-            supersede-menu = true;
+            supersede-menu = false;
           };
         };
       };

@@ -95,8 +95,9 @@
           Mod+Return { spawn "foot"; }
           Mod+D      { spawn "fuzzel"; }
           Mod+B      { spawn "zen-beta"; }
+          Mod+E      { spawn "foot" "yazi"; }
           Mod+Alt+L { spawn "swaylock"; }
-          Mod+Shift+E { quit; }
+          Mod+Shift+Q { quit; }
 
           Mod+V       { toggle-window-floating; }
           Mod+Shift+V { switch-focus-between-floating-and-tiling; }

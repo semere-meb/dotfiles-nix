@@ -19,7 +19,7 @@ allModules
       self.nixosModules.user
       self.nixosModules.desktop
       self.nixosModules.dev
-      self.nixosModules.cli-tools
+      self.nixosModules.starship
       self.nixosModules.git
       self.nixosModules.gpg
       self.nixosModules.zsh
@@ -28,7 +28,6 @@ allModules
       self.nixosModules.niri
       self.nixosModules.osd
       self.nixosModules.fnott
-      self.nixosModules.greetd
     ];
   };
 
@@ -36,7 +35,7 @@ allModules
     imports = [
       self.nixosModules.core
       self.nixosModules.user
-      self.nixosModules.cli-tools
+      self.nixosModules.starship
       self.nixosModules.git
       self.nixosModules.gpg
       self.nixosModules.zsh

@@ -7,6 +7,8 @@
 
 {
   environment.systemPackages = with pkgs; [
+    tealdeer
+    opencode
     gcc
     gnumake
     clang-tools
