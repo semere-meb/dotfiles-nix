@@ -105,6 +105,10 @@ in
             command = "${pkgs.wlopm}/bin/wlopm --off '*'";
             resumeCommand = "${pkgs.wlopm}/bin/wlopm --on '*'";
           }
+          {
+            timeout = 900;
+            command = "${pkgs.systemd}/bin/systemctl hibernate";
+          }
         ];
       };
 

@@ -35,6 +35,15 @@ in
 
     services.power-profiles-daemon.enable = true;
 
+    services.logind = {
+      settings = {
+        Login = {
+          HandleLidSwitch = "suspend-then-hibernate";
+          HibernateDelaySec = "1800";
+        };
+      };
+    };
+
     nix = {
       settings = {
         experimental-features = [
