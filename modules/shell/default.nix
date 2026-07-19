@@ -2,8 +2,16 @@
 
 let
   cfg = config.dotfiles.shell;
+
+  shellDir = ./.;
+  otherShellFiles = builtins.filter
+    (name: name != "default.nix" && lib.strings.hasSuffix ".nix" name)
+    (builtins.attrNames (builtins.readDir shellDir));
+  importedModules = map (file: shellDir + "/${file}") otherShellFiles;
 in
 {
+  imports = importedModules;
+
   options.dotfiles.shell = {
     enable = lib.mkEnableOption "Shell, Git, GPG, and CLI environment";
   };
@@ -12,7 +20,6 @@ in
     environment.systemPackages = with pkgs; [
       git
       wget
-      tree
       tealdeer
       gnupg
       pass
@@ -20,6 +27,8 @@ in
       btop
       helix
       opencode
+      fd
+      ripgrep
     ];
 
     home-manager.users."${userVars.username}" = {
@@ -44,18 +53,6 @@ in
         defaultCacheTtl = 1800;
         enableSshSupport = true;
         pinentry.package = pkgs.pinentry-curses;
-      };
-
-      programs.bash = {
-        enable = true;
-        shellAliases = {
-          ll = "ls -lha";
-        };
-      };
-
-      programs.fzf = {
-        enable = true;
-        enableBashIntegration = true;
       };
 
       programs.helix = {
