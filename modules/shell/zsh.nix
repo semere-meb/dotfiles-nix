@@ -28,6 +28,22 @@ in
 
         dotDir = "/home/${userVars.username}/.config/zsh";
 
+        initContent = ''
+          # -- GPG / SSH Configuration --
+          export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+
+          # Import Wayland environment to systemd for GUI tools (like pinentry-gnome3)
+          if [ -n "$WAYLAND_DISPLAY" ]; then
+            systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS 2>/dev/null
+            dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS 2>/dev/null
+          fi
+
+          # Automatically start dwl on TTY 1
+          if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+            exec dwl
+          fi
+        '';
+
         history = {
           size = 10000;
           save = 10000;

@@ -36,6 +36,8 @@ in
     security.polkit.enable = true;
     security.pam.services.swaylock = {};
 
+    services.getty.autologinUser = "${userVars.username}";
+
     environment.systemPackages = with pkgs; [
       pamixer
       brightnessctl
