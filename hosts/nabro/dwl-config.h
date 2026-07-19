@@ -125,6 +125,7 @@ static const char *voldown[] = { "pamixer", "-d", "5", NULL };
 static const char *volmute[] = { "pamixer", "-t", NULL };
 static const char *brightup[] = { "brightnessctl", "set", "10%+", NULL };
 static const char *brightdown[] = { "brightnessctl", "set", "10%-", NULL };
+static const char *lockcmd[] = { "swaylock", NULL };
 
 const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
@@ -135,10 +136,12 @@ const Key keys[] = {
 
 	{ 0, XF86XK_MonBrightnessUp,   spawn, {.v = brightup} },
 	{ 0, XF86XK_MonBrightnessDown, spawn, {.v = brightdown} },
+	{ 0,                         XKB_KEY_Print,       spawn,            SHCMD("grim -g \"$(slurp)\" - | wl-copy") },
 
 	{ MODKEY,                    XKB_KEY_p,           spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_w,           spawn,            {.v = browsercmd} },
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_l,           spawn,            {.v = lockcmd} },
 	{ MODKEY,                    XKB_KEY_j,           focusstack,       {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,           focusstack,       {.i = -1} },
 	{ MODKEY,                    XKB_KEY_i,           incnmaster,       {.i = +1} },
