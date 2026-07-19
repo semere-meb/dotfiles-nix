@@ -79,7 +79,7 @@
           };
 
           soft-wrap = {
-            enable = true;
+            enable = false;
           };
 
           smart-tab = {

@@ -61,6 +61,7 @@
     brightnessctl
     wl-clipboard
     fuzzel
+    libnotify
     fnott
     foot
     tor-browser
@@ -150,20 +151,6 @@
       };
     };
 
-    services.fnott = {
-      enable = true;
-      settings = {
-        main = {
-          font = "JetBrainsMono Nerd Font:size=11";
-          background = "1a1a24e0";
-          border-color = "b085f5ff";
-          border-size = 2;
-          padding-vertical = 12;
-          padding-horizontal = 16;
-          summary-color = "ffffffff";
-          body-color = "e0e0e0ff";
-        };
-      };
-    };
+
   };
 }

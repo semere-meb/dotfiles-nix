@@ -59,13 +59,8 @@
 
           Mod+H     { focus-column-left; }
           Mod+L     { focus-column-right; }
-          Mod+J     { focus-window-down; }
-          Mod+K     { focus-window-up; }
-
-          Mod+Shift+H     { move-column-left; }
-          Mod+Shift+L     { move-column-right; }
-          Mod+Shift+J     { move-window-down; }
-          Mod+Shift+K     { move-window-up; }
+          Mod+J     { focus-window-or-workspace-down; }
+          Mod+K     { focus-window-or-workspace-up; }
 
           Mod+1 { focus-workspace "browser"; }
           Mod+2 { focus-workspace "term"; }
@@ -76,6 +71,11 @@
           Mod+7 { focus-workspace 7; }
           Mod+8 { focus-workspace 8; }
           Mod+9 { focus-workspace 9; }
+
+          Mod+Shift+H     { move-column-left; }
+          Mod+Shift+L     { move-column-right; }
+          Mod+Shift+J     { move-window-down; }
+          Mod+Shift+K     { move-window-up; }
 
           Mod+Shift+1 { move-column-to-workspace "browser"; }
           Mod+Shift+2 { move-column-to-workspace "term"; }
@@ -95,7 +95,7 @@
           Mod+Return { spawn "foot"; }
           Mod+D      { spawn "fuzzel"; }
           Mod+B      { spawn "zen-beta"; }
-          Mod+Ctrl+L { spawn "swaylock"; }
+          Mod+Alt+L { spawn "swaylock"; }
           Mod+Shift+E { quit; }
 
           Mod+V       { toggle-window-floating; }
@@ -108,11 +108,11 @@
           Mod+Comma        { consume-window-into-column; }
           Mod+Period       { expel-window-from-column; }
 
-          XF86AudioRaiseVolume { spawn "pamixer" "-i" "5"; }
-          XF86AudioLowerVolume { spawn "pamixer" "-d" "5"; }
-          XF86AudioMute        { spawn "pamixer" "-t"; }
-          XF86MonBrightnessUp   { spawn "brightnessctl" "set" "10%+"; }
-          XF86MonBrightnessDown { spawn "brightnessctl" "set" "10%-"; }
+          XF86AudioRaiseVolume  { spawn "~/.config/fnott/scripts/osd.sh" "volume" "raise"; }
+          XF86AudioLowerVolume  { spawn "~/.config/fnott/scripts/osd.sh" "volume" "lower"; }
+          XF86AudioMute         { spawn "~/.config/fnott/scripts/osd.sh" "volume" "mute"; }
+          XF86MonBrightnessUp   { spawn "~/.config/fnott/scripts/osd.sh" "brightness" "raise"; }
+          XF86MonBrightnessDown { spawn "~/.config/fnott/scripts/osd.sh" "brightness" "lower"; }
 
           Print { screenshot; }
           Mod+Print { screenshot-screen; }
