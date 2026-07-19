@@ -53,7 +53,6 @@
     wmenu
     fnott
     foot
-    firefox
     tor-browser
     grim
     slurp
