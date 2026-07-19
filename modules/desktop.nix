@@ -1,4 +1,10 @@
-{ config, lib, pkgs, userVars, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userVars,
+  ...
+}:
 
 let
   cfg = config.dotfiles.desktop;
@@ -28,13 +34,16 @@ in
     ];
 
     fonts.fontconfig.defaultFonts = {
-      monospace = [ "JetBrainsMono Nerd Font" "Noto Sans Mono" ];
+      monospace = [
+        "JetBrainsMono Nerd Font"
+        "Noto Sans Mono"
+      ];
       emoji = [ "Noto Color Emoji" ];
     };
 
     hardware.graphics.enable = true;
     security.polkit.enable = true;
-    security.pam.services.swaylock = {};
+    security.pam.services.swaylock = { };
 
     services.getty.autologinUser = "${userVars.username}";
 
@@ -87,8 +96,15 @@ in
           lock = "${pkgs.swaylock-effects}/bin/swaylock -f";
         };
         timeouts = [
-          { timeout = 300; command = "${pkgs.swaylock-effects}/bin/swaylock -f"; }
-          { timeout = 600; command = "${pkgs.wlopm}/bin/wlopm --off '*'"; resumeCommand = "${pkgs.wlopm}/bin/wlopm --on '*'"; }
+          {
+            timeout = 300;
+            command = "${pkgs.swaylock-effects}/bin/swaylock -f";
+          }
+          {
+            timeout = 600;
+            command = "${pkgs.wlopm}/bin/wlopm --off '*'";
+            resumeCommand = "${pkgs.wlopm}/bin/wlopm --on '*'";
+          }
         ];
       };
 

@@ -35,7 +35,10 @@ in
             auto-info = true;
             rulers = [ 80 ];
             bufferline = "multiple";
-            shell = [ "zsh" "-c" ];
+            shell = [
+              "zsh"
+              "-c"
+            ];
             jump-label-alphabet = "asdfghjklqwertyuiopzxcvbnm";
 
             cursor-shape = {

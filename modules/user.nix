@@ -1,4 +1,10 @@
-{ config, lib, pkgs, userVars, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userVars,
+  ...
+}:
 
 let
   cfg = config.dotfiles.user;

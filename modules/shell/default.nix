@@ -1,12 +1,18 @@
-{ config, lib, pkgs, userVars, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userVars,
+  ...
+}:
 
 let
   cfg = config.dotfiles.shell;
 
   shellDir = ./.;
-  otherShellFiles = builtins.filter
-    (name: name != "default.nix" && lib.strings.hasSuffix ".nix" name)
-    (builtins.attrNames (builtins.readDir shellDir));
+  otherShellFiles = builtins.filter (
+    name: name != "default.nix" && lib.strings.hasSuffix ".nix" name
+  ) (builtins.attrNames (builtins.readDir shellDir));
   importedModules = map (file: shellDir + "/${file}") otherShellFiles;
 in
 {
@@ -54,7 +60,6 @@ in
         enableSshSupport = true;
         pinentry.package = pkgs.pinentry-qt;
       };
-
 
     };
   };
