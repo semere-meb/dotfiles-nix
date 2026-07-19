@@ -66,43 +66,10 @@ in
           ga = "git add -A";
           gm = "git add -m";
           gl = "git log --oneline";
-          rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles-nix#nabro";
           cleanup = "sudo nix-collect-garbage -d";
           ".." = "cd ..";
           "..." = "cd ../..";
         };
-
-        # initContent = ''
-        #   # -- completions configuration --
-        #   # base completion styling (fzf-tab overrides the visual menu below)
-        #   zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-        #   zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-        #   zstyle ':completion:*:descriptions' format '%F{blue}-- %d --%f'
-        #   zstyle ':completion:*' rehash true
-
-        #   # disable the plain menu so fzf-tab takes over Tab completion
-        #   zstyle ':completion:*' menu no
-
-        #   # -- keybindings --
-        #   bindkey -e   # emacs bindings; swap for `bindkey -v` if you want vi-mode
-        #   bindkey '^[[A' history-substring-search-up
-        #   bindkey '^[[B' history-substring-search-down
-        #   bindkey '^ ' autosuggest-accept
-
-        #   # -- shell options --
-        #   setopt AUTO_CD
-        #   setopt AUTO_PUSHD
-        #   setopt PUSHD_IGNORE_DUPS
-        #   setopt EXTENDED_GLOB
-        #   setopt INTERACTIVE_COMMENTS
-        #   setopt NO_BEEP
-
-        #   # -- fzf-tab behavior --
-        #   zstyle ':fzf-tab:*' fzf-command fzf
-        #   zstyle ':fzf-tab:complete:*:*' fzf-preview \
-        #     'bat --color=always --style=numbers --line-range=:100 $realpath 2>/dev/null || eza -1 --color=always $realpath 2>/dev/null'
-        #   zstyle ':fzf-tab:*' switch-group ',' '.'
-        # '';
       };
 
       programs.starship = {
