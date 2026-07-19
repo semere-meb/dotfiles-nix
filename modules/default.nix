@@ -1,16 +1,41 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, self, ... }:
+let
+  moduleDirectoryList = builtins.filter (
+    name: name != "default.nix" && lib.strings.hasSuffix ".nix" name
+  ) (builtins.attrNames (builtins.readDir ./.));
 
-{
-  imports = [
-    ./core.nix
-    ./user.nix
-    ./desktop.nix
-    ./dev.nix
-    ./shell
-  ];
+  allModules = builtins.listToAttrs (
+    builtins.map (entry: {
+      name = lib.strings.removeSuffix ".nix" entry;
+      value = ./. + "/${entry}";
+    }) moduleDirectoryList
+  );
+in
+allModules
+// {
+  desktop-suite = {
+    imports = [
+      self.nixosModules.core
+      self.nixosModules.user
+      self.nixosModules.desktop
+      self.nixosModules.dev
+      self.nixosModules.cli-tools
+      self.nixosModules.git
+      self.nixosModules.gpg
+      self.nixosModules.zsh
+      self.nixosModules.helix
+    ];
+  };
+
+  core-suite = {
+    imports = [
+      self.nixosModules.core
+      self.nixosModules.user
+      self.nixosModules.cli-tools
+      self.nixosModules.git
+      self.nixosModules.gpg
+      self.nixosModules.zsh
+      self.nixosModules.helix
+    ];
+  };
 }

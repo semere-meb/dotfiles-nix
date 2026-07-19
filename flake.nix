@@ -35,7 +35,7 @@
         in
         lib.nixosSystem {
           system = hostConfig.system;
-          specialArgs = { inherit userVars; };
+          specialArgs = { inherit userVars self; };
           modules = [
             hostConfig.configModule
           ]
@@ -45,7 +45,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit userVars; };
+                extraSpecialArgs = { inherit userVars self; };
                 backupFileExtension = "backup";
               };
             }
@@ -55,5 +55,6 @@
     in
     {
       inherit nixosConfigurations;
+      nixosModules = import ./modules { inherit lib self; };
     };
 }

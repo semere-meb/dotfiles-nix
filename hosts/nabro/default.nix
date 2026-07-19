@@ -5,24 +5,15 @@
       config,
       lib,
       pkgs,
+      self,
       ...
     }:
     {
       imports = [
         ./hardware-configuration.nix
-        ../../modules
+        self.nixosModules.desktop-suite
       ];
 
       networking.hostName = "nabro";
-
-      dotfiles = {
-        core.enable = true;
-        user.enable = true;
-        desktop.enable = true;
-        dev.enable = true;
-        shell.enable = true;
-        zsh.enable = true;
-        helix.enable = true;
-      };
     };
 }
