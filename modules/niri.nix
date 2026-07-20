@@ -15,7 +15,9 @@
 
       workspace "browser"
       workspace "term"
-
+      hotkey-overlay {
+        skip-at-startup
+      }   
       input {
           keyboard {
               xkb {
