@@ -32,7 +32,7 @@
 
         # Automatically start niri on TTY 1
         if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-          exec niri
+          exec niri-session
         fi
       '';
 

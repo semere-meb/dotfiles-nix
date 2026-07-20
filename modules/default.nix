@@ -26,8 +26,7 @@ allModules
       self.nixosModules.helix
       self.nixosModules.zen-browser
       self.nixosModules.niri
-      self.nixosModules.osd
-      self.nixosModules.fnott
+      self.nixosModules.noctalia
     ];
   };
 

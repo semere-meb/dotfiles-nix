@@ -15,6 +15,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/cachix";
+    };
   };
 
   outputs =
@@ -23,6 +27,7 @@
       nixpkgs,
       home-manager,
       zen-browser,
+      noctalia,
       ...
     }:
     let
@@ -41,7 +46,7 @@
         in
         lib.nixosSystem {
           system = hostConfig.system;
-          specialArgs = { inherit userVars self zen-browser; };
+          specialArgs = { inherit userVars self zen-browser noctalia; };
           modules = [
             hostConfig.configModule
           ]
@@ -51,7 +56,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit userVars self zen-browser; };
+                extraSpecialArgs = { inherit userVars self zen-browser noctalia; };
                 backupFileExtension = "backup";
                 sharedModules = [
                   zen-browser.homeModules.default

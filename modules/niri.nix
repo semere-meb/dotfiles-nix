@@ -52,8 +52,6 @@
           }
       }
 
-      spawn-at-startup "fnott"
-
       binds {
           Mod+Shift+Slash { show-hotkey-overlay; }
 
@@ -93,10 +91,12 @@
           Mod+Space { switch-preset-column-width; }
 
           Mod+Return { spawn "foot"; }
-          Mod+D      { spawn "fuzzel"; }
+          Mod+D      { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
           Mod+B      { spawn "zen-beta"; }
+          Mod+Shift+B { spawn "noctalia" "msg" "bar-toggle"; }
           Mod+E      { spawn "foot" "yazi"; }
-          Mod+Alt+L { spawn "swaylock"; }
+          Mod+Ctrl+L { spawn "noctalia" "msg" "session" "lock"; }
+          Mod+N      { spawn "noctalia" "msg" "nightlight-toggle"; }
           Mod+Shift+Q { quit; }
 
           Mod+V       { toggle-window-floating; }
@@ -109,11 +109,11 @@
           Mod+Comma        { consume-window-into-column; }
           Mod+Period       { expel-window-from-column; }
 
-          XF86AudioRaiseVolume  { spawn "~/.config/fnott/scripts/osd.sh" "volume" "raise"; }
-          XF86AudioLowerVolume  { spawn "~/.config/fnott/scripts/osd.sh" "volume" "lower"; }
-          XF86AudioMute         { spawn "~/.config/fnott/scripts/osd.sh" "volume" "mute"; }
-          XF86MonBrightnessUp   { spawn "~/.config/fnott/scripts/osd.sh" "brightness" "raise"; }
-          XF86MonBrightnessDown { spawn "~/.config/fnott/scripts/osd.sh" "brightness" "lower"; }
+          XF86AudioRaiseVolume  { spawn "noctalia" "msg" "volume-up"; }
+          XF86AudioLowerVolume  { spawn "noctalia" "msg" "volume-down"; }
+          XF86AudioMute         { spawn "noctalia" "msg" "volume-mute-toggle"; }
+          XF86MonBrightnessUp   { spawn "noctalia" "msg" "brightness-up"; }
+          XF86MonBrightnessDown { spawn "noctalia" "msg" "brightness-down"; }
 
           Print { screenshot; }
           Mod+Print { screenshot-screen; }
