@@ -27,6 +27,11 @@ allModules
       self.nixosModules.zen-browser
       self.nixosModules.niri
       self.nixosModules.noctalia
+      # self.nixosModules.fuzzel
+      # self.nixosModules.fnott
+      # self.nixosModules.swaylock
+      # self.nixosModules.swayidle
+      # self.nixosModules.wlsunset
     ];
   };
 

@@ -113,7 +113,7 @@
 
           XF86AudioRaiseVolume  { spawn "noctalia" "msg" "volume-up"; }
           XF86AudioLowerVolume  { spawn "noctalia" "msg" "volume-down"; }
-          XF86AudioMute         { spawn "noctalia" "msg" "volume-mute-toggle"; }
+          XF86AudioMute         { spawn "noctalia" "msg" "volume-mute"; }
           XF86MonBrightnessUp   { spawn "noctalia" "msg" "brightness-up"; }
           XF86MonBrightnessDown { spawn "noctalia" "msg" "brightness-down"; }
 
@@ -130,6 +130,10 @@
       window-rule {
           match app-id="^foot$"
           open-on-workspace "term"
+      }
+
+      switch-events {
+          lid-close { spawn "noctalia" "msg" "session" "lock-and-suspend"; }
       }
     '';
   };

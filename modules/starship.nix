@@ -60,7 +60,7 @@
         staged = "+\${count}";
         modified = "!\${count}";
         untracked = "?\${count}";
-        stashed = "\$";
+        stashed = "\\$";
       };
 
       nix_shell = {

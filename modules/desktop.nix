@@ -29,6 +29,10 @@
   };
 
   hardware.graphics.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
   security.polkit.enable = true;
   programs.dconf.enable = true;
 
@@ -55,6 +59,7 @@
     brightnessctl
     wl-clipboard
     libnotify
+    xwayland-satellite
   ];
 
   home-manager.users."${userVars.username}" = {
