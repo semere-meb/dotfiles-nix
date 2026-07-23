@@ -7,7 +7,7 @@
 }:
 
 {
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   home-manager.users."${userVars.username}" = {
     programs.swaylock = {

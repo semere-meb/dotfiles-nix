@@ -15,8 +15,14 @@
         lock = "${pkgs.swaylock}/bin/swaylock -f";
       };
       timeouts = [
-        { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-        { timeout = 600; command = "niri msg action power-off-monitors"; }
+        {
+          timeout = 300;
+          command = "${pkgs.swaylock}/bin/swaylock -f";
+        }
+        {
+          timeout = 600;
+          command = "niri msg action power-off-monitors";
+        }
       ];
     };
   };

@@ -46,7 +46,14 @@
         in
         lib.nixosSystem {
           system = hostConfig.system;
-          specialArgs = { inherit userVars self zen-browser noctalia; };
+          specialArgs = {
+            inherit
+              userVars
+              self
+              zen-browser
+              noctalia
+              ;
+          };
           modules = [
             hostConfig.configModule
           ]
@@ -56,7 +63,14 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit userVars self zen-browser noctalia; };
+                extraSpecialArgs = {
+                  inherit
+                    userVars
+                    self
+                    zen-browser
+                    noctalia
+                    ;
+                };
                 backupFileExtension = "backup";
                 sharedModules = [
                   zen-browser.homeModules.default
