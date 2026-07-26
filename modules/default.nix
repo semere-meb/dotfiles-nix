@@ -22,6 +22,7 @@ allModules
       self.nixosModules.starship
       self.nixosModules.git
       self.nixosModules.gpg
+      self.nixosModules.keepassxc
       self.nixosModules.zsh
       self.nixosModules.helix
       self.nixosModules.zen-browser

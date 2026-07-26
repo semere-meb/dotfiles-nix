@@ -29,6 +29,11 @@
             installation_mode = "force_installed";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
           };
+          # KeePassXC-Browser
+          "keepassxc-browser@keepassxc.org" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+          };
         };
       };
 
