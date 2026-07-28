@@ -16,8 +16,8 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-    noto-fonts
     noto-fonts-color-emoji
+    sil-abyssinica
   ];
 
   fonts.fontconfig.defaultFonts = {

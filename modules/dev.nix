@@ -20,5 +20,6 @@
     nil
     nixd
     nixfmt
+    gh
   ];
 }
