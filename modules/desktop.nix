@@ -14,6 +14,32 @@
     jack.enable = true;
   };
 
+  # to run binaries targeting generic linux
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    openssl
+    glib
+    fontconfig
+    freetype
+    libX11
+    libXext
+    libXi
+    libXrender
+    libXrandr
+    libXtst
+    libXcursor
+    libXfixes
+    libXinerama
+    gtk3
+    cairo
+    pango
+    atk
+    dbus
+  ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     noto-fonts-color-emoji
