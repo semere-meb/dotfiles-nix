@@ -16,10 +16,10 @@
   home-manager.users."${userVars.username}" = {
     services.gpg-agent = {
       enable = true;
-      defaultCacheTtl = 7200;
-      defaultCacheTtlSsh = 7200;
-      maxCacheTtl = 28800;
-      maxCacheTtlSsh = 28800;
+      defaultCacheTtl = 86400;
+      defaultCacheTtlSsh = 86400;
+      maxCacheTtl = 86400;
+      maxCacheTtlSsh = 86400;
       enableSshSupport = false;
       pinentry.package = pkgs.pinentry-gnome3;
     };
