@@ -6,6 +6,9 @@
   ...
 }:
 
+let
+  useSshSigning = userVars ? sshKey && userVars.sshKey != "";
+in
 {
   home-manager.users."${userVars.username}" = {
     programs.git = {
@@ -16,10 +19,13 @@
           email = userVars.email;
         };
         commit.gpgsign = true;
+      } // (if useSshSigning then {
+        gpg.format = "ssh";
+      } else {
         gpg.program = "gpg";
-      };
+      });
       signing = {
-        key = userVars.gpgKey;
+        key = if useSshSigning then userVars.sshKey else userVars.gpgKey;
         signByDefault = true;
       };
     };
