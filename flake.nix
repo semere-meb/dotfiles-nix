@@ -15,10 +15,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia/cachix";
-    };
   };
 
   outputs =
@@ -27,7 +23,6 @@
       nixpkgs,
       home-manager,
       zen-browser,
-      noctalia,
       ...
     }:
     let
@@ -51,7 +46,6 @@
               userVars
               self
               zen-browser
-              noctalia
               ;
           };
           modules = [
@@ -68,7 +62,6 @@
                     userVars
                     self
                     zen-browser
-                    noctalia
                     ;
                 };
                 backupFileExtension = "backup";

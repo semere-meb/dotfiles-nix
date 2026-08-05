@@ -27,13 +27,13 @@ allModules
       self.nixosModules.helix
       self.nixosModules.zen-browser
       self.nixosModules.niri
-      self.nixosModules.noctalia
+      # self.nixosModules.noctalia
       # self.nixosModules.dwl
-      # self.nixosModules.fuzzel
-      # self.nixosModules.fnott
-      # self.nixosModules.swaylock
-      # self.nixosModules.swayidle
-      # self.nixosModules.wlsunset
+      self.nixosModules.fuzzel
+      self.nixosModules.fnott
+      self.nixosModules.swaylock
+      self.nixosModules.swayidle
+      self.nixosModules.wlsunset
     ];
   };
 

@@ -93,12 +93,9 @@
           Mod+Space { switch-preset-column-width; }
 
           Mod+Return { spawn "foot"; }
-          Mod+D      { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+          Mod+D { spawn "fuzzel"; }
           Mod+B      { spawn "zen-beta"; }
-          Mod+Shift+B { spawn "noctalia" "msg" "bar-toggle"; }
           Mod+E      { spawn "foot" "yazi"; }
-          Mod+Ctrl+L { spawn "noctalia" "msg" "session" "lock"; }
-          Mod+N      { spawn "noctalia" "msg" "nightlight-toggle"; }
           Mod+Shift+Q { quit; }
 
           Mod+V       { toggle-window-floating; }
