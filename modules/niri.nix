@@ -96,6 +96,8 @@
           Mod+D { spawn "fuzzel"; }
           Mod+B      { spawn "zen-beta"; }
           Mod+E      { spawn "foot" "yazi"; }
+          Mod+N      { spawn "sh" "-c" "pidof wlsunset && pkill wlsunset || wlsunset -l 52.52 -L 13.40 &"; }
+          Mod+Shift+X { spawn "swaylock"; }
           Mod+Shift+Q { quit; }
 
           Mod+V       { toggle-window-floating; }
@@ -108,11 +110,11 @@
           Mod+Comma        { consume-window-into-column; }
           Mod+Period       { expel-window-from-column; }
 
-          XF86AudioRaiseVolume  { spawn "noctalia" "msg" "volume-up"; }
-          XF86AudioLowerVolume  { spawn "noctalia" "msg" "volume-down"; }
-          XF86AudioMute         { spawn "noctalia" "msg" "volume-mute"; }
-          XF86MonBrightnessUp   { spawn "noctalia" "msg" "brightness-up"; }
-          XF86MonBrightnessDown { spawn "noctalia" "msg" "brightness-down"; }
+          XF86AudioRaiseVolume  { spawn "pamixer" "-i" "5"; }
+          XF86AudioLowerVolume  { spawn "pamixer" "-d" "5"; }
+          XF86AudioMute         { spawn "pamixer" "-t"; }
+          XF86MonBrightnessUp   { spawn "brightnessctl" "set" "10%+"; }
+          XF86MonBrightnessDown { spawn "brightnessctl" "set" "10%-"; }
 
           Print { screenshot; }
           Mod+Print { screenshot-screen; }
