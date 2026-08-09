@@ -1,7 +1,8 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -61,7 +62,14 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "zen-beta", NULL };
-
+static const char *lockcmd[]  = { "slock", NULL };
+static const char *volupcmd[]  = { "sh", "-c", "pamixer -i 5 && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low \"Volume\" \"$(pamixer --get-volume-human)\"", NULL };
+static const char *voldowncmd[]  = { "sh", "-c", "pamixer -d 5 && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low \"Volume\" \"$(pamixer --get-volume-human)\"", NULL };
+static const char *volmutecmd[]  = { "sh", "-c", "pamixer -t && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low \"Volume\" \"$(pamixer --get-volume-human)\"", NULL };
+static const char *brightupcmd[]  = { "sh", "-c", "brightnessctl set 10%+ && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low \"Brightness\" \"$(brightnessctl -m | cut -d, -f4)\"", NULL };
+static const char *brightdowncmd[]  = { "sh", "-c", "brightnessctl set 10%- && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low \"Brightness\" \"$(brightnessctl -m | cut -d, -f4)\"", NULL };
+static const char *shotcmd[]        = { "sh", "-c", "maim | tee ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png | xclip -sel c -t image/png", NULL };
+static const char *shotselectcmd[]  = { "sh", "-c", "maim -s | tee ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png | xclip -sel c -t image/png", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -97,6 +105,14 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = lockcmd } },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+	{ 0,                            XF86XK_AudioMute,        spawn, {.v = volmutecmd } },
+	{ 0,                            XF86XK_MonBrightnessUp,  spawn, {.v = brightupcmd } },
+	{ 0,                            XF86XK_MonBrightnessDown,spawn, {.v = brightdowncmd } },
+	{ 0,                            XK_Print,  spawn,          {.v = shotcmd } },
+	{ MODKEY,                       XK_Print,  spawn,          {.v = shotselectcmd } },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
