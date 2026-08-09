@@ -21,15 +21,15 @@
       dotDir = "/home/${userVars.username}/.config/zsh";
 
       initContent = ''
-        # Import Wayland environment to systemd for GUI tools (like pinentry-gnome3)
-        if [ -n "$WAYLAND_DISPLAY" ]; then
-          systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS 2>/dev/null
-          dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS 2>/dev/null
-        fi
+        # # Import Wayland environment to systemd for GUI tools (like pinentry-gnome3)
+        # if [ -n "$WAYLAND_DISPLAY" ]; then
+        #   systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS 2>/dev/null
+        #   dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS 2>/dev/null
+        # fi
 
-        # Automatically start niri on TTY 1
+        # Automatically start dwm on TTY 1
         if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-          exec niri-session
+          exec startx
         fi
       '';
 

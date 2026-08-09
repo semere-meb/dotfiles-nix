@@ -13,6 +13,9 @@ let
 in
 allModules
 // {
+  x11-dwm = ./x11-dwm;
+  wayland-niri = ./wayland-niri;
+
   desktop-suite = {
     imports = [
       self.nixosModules.core
@@ -21,17 +24,13 @@ allModules
       self.nixosModules.dev
       self.nixosModules.starship
       self.nixosModules.git
-      self.nixosModules.gpg
+      # self.nixosModules.gpg
       self.nixosModules.keepassxc
       self.nixosModules.zsh
       self.nixosModules.helix
       self.nixosModules.zen-browser
-      self.nixosModules.niri
-      self.nixosModules.fuzzel
-      self.nixosModules.fnott
-      self.nixosModules.swaylock
-      self.nixosModules.swayidle
-      self.nixosModules.wlsunset
+      self.nixosModules.x11-dwm
+      # self.nixosModules.wayland-niri
     ];
   };
 

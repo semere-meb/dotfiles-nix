@@ -78,7 +78,7 @@
     style = "adwaita-dark";
   };
 
-  services.getty.autologinUser = "${userVars.username}";
+  # services.getty.autologinUser = "${userVars.username}";
 
   environment.systemPackages = with pkgs; [
     pamixer

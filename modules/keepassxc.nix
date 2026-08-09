@@ -11,6 +11,10 @@
     keepassxc
   ];
 
+  # Enable the standard system-wide SSH agent.
+  programs.ssh.startAgent = true;
+  services.gnome.gcr-ssh-agent.enable = false;
+
   # Re-enable GNOME Keyring as the secret service.
   services.gnome.gnome-keyring.enable = true;
 
