@@ -15,6 +15,7 @@
       settings = {
         theme = "ayu_dark";
         editor = {
+          true-color = true;
           line-number = "relative";
           mouse = false;
           color-modes = true;
