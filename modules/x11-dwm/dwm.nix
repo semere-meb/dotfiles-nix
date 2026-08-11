@@ -9,41 +9,34 @@
 {
   services.xserver = {
     enable = true;
-
     xkb = {
       layout = "us";
       variant = "";
       options = "ctrl:swapcaps";
     };
-
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.override {
         conf = builtins.readFile ./dwm-config.h;
-        patches = [
-        ];
+        patches = [ ];
       };
     };
-
-    displayManager.startx.enable = true;
   };
+
+  services.displayManager.ly.enable = true;
+  services.displayManager.defaultSession = "none+dwm";
+
+  services.picom = {
+    enable = true;
+    backend = "glx";
+    vSync = true;
+  };
+
+  services.dunst.enable = true;
 
   environment.systemPackages = with pkgs; [
     dmenu
     xclip
     xkill
   ];
-
-  services.picom = {
-    enable = true;
-  };
-
-  home-manager.users."${userVars.username}" = {
-    # Set up .xinitrc to launch slstatus and dwm
-    home.file.".xinitrc".text = ''
-      dunst &
-
-      exec dwm
-    '';
-  };
 }
