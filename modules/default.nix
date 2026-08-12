@@ -26,7 +26,9 @@ allModules
       self.nixosModules.git
       # self.nixosModules.gpg
       self.nixosModules.keepassxc
-      self.nixosModules.zsh
+      # self.nixosModules.zsh
+      self.nixosModules.bash
+      self.nixosModules.tmux
       self.nixosModules.helix
       self.nixosModules.zen-browser
       self.nixosModules.x11-dwm
@@ -41,8 +43,9 @@ allModules
       self.nixosModules.starship
       self.nixosModules.git
       self.nixosModules.gpg
-      self.nixosModules.zsh
+      self.nixosModules.bash
       self.nixosModules.helix
+      self.nixosModules.tmux
     ];
   };
 }

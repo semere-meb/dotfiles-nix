@@ -21,6 +21,8 @@
       dotDir = "/home/${userVars.username}/.config/zsh";
 
       initContent = ''
+        bindkey -e
+
         # # Import Wayland environment to systemd for GUI tools (like pinentry-gnome3)
         # if [ -n "$WAYLAND_DISPLAY" ]; then
         #   systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS 2>/dev/null

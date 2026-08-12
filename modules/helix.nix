@@ -29,7 +29,7 @@
           rulers = [ 80 ];
           bufferline = "multiple";
           shell = [
-            "zsh"
+            "bash"
             "-c"
           ];
           jump-label-alphabet = "asdfghjklqwertyuiopzxcvbnm";
