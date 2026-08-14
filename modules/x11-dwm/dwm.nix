@@ -9,11 +9,11 @@
 {
   services.xserver = {
     enable = true;
-    xkb = {
-      layout = "us";
-      variant = "";
-      options = "ctrl:swapcaps";
-    };
+    # xkb = {
+    #   layout = "us";
+    #   variant = "";
+    #   options = "ctrl:swapcaps";
+    # };
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.override {

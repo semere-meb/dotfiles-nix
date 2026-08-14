@@ -18,37 +18,65 @@
     baseIndex = 1;
 
     extraConfig = ''
-      # Ensure st terminal features like 24-bit truecolor support work properly
-      set -ag terminal-overrides ",st-256color:Tc"
-      set -as terminal-features ",st-256color:RGB"
+      # ----- Status Bar And Optics -----
 
-      # Renumber windows when one is closed
-      set -g renumber-windows on
-
-      # Status bar design matching Helix (Ayu Dark) with sharp corner style
+      # status bar
       set -g status-position bottom
-      set -g status-justify left
-      set -g status-style "bg=#1f2430,fg=#b3b1ad"
+      set -g status-interval 1
+      set -g status-style bg=#1a1a1a,fg=#B4B4B4
 
-      # Pane borders matching Ayu Dark
-      set -g pane-border-style "fg=#242936,bg=#0f1419"
-      set -g pane-active-border-style "fg=#ffb454,bg=#0f1419"
+      # left: session name
+      set -g status-left "#[bg=#FF8C64,fg=#000000] #S #[bg=#1a1a1a,fg=#FF8C64]  "
+      set -g status-left-length 30
 
-      # Message/command line styling
-      set -g message-style "bg=#1f2430,fg=#ffb454,bold"
+      # right: directory, hostname, time
+      set -g status-right "#[fg=#B4B4B4]#{pane_current_path}  #[fg=#FF8C64]#{host}  #[bg=#FF8C64,fg=#000000] %H:%M:%S "
+      set -g status-right-length 200
 
-      # Window status formatting (rectangular/sharp style)
+      # windows
+      set -g window-status-format "#[fg=#666666] #I:#W "
+      set -g window-status-current-format "#[fg=#FF8C64] #I:#W "
       set -g window-status-separator ""
-      set -g window-status-format "#[fg=#b3b1ad,bg=#1f2430] #I:#W #[fg=#5c6773,bg=#1f2430]│"
-      set -g window-status-current-format "#[fg=#ffb454,bg=#2d3744,bold] #I:#W #[fg=#5c6773,bg=#1f2430]│"
 
-      # Status Left: Session info with sharp corner block
-      set -g status-left-length 50
-      set -g status-left "#[fg=#0f1419,bg=#39bae6,bold] ❐ #S #[fg=#39bae6,bg=#1f2430,none] │"
+      # pane borders
+      set -g pane-border-style fg=#7A5C4A
+      set -g pane-active-border-style fg=#7A5C4A
 
-      # Status Right: Date, Time, and Host with sharp corner blocks and vertical separator │
-      set -g status-right-length 100
-      set -g status-right "#[fg=#5c6773,bg=#1f2430]│#[fg=#7fd962,bg=#1f2430] %Y-%m-%d #[fg=#5c6773]│#[fg=#ffb454,bg=#1f2430,bold] %H:%M #[fg=#5c6773,bg=#1f2430,none]│#[fg=#0f1419,bg=#39bae6,bold] #H "
+      # active pane
+      # set -g pane-border-status top
+      # set -g pane-border-format "#{?pane_active,#[fg=#FF8C64]●,}"
+
+      # dim inactive panes
+      # set -g window-style 'fg=#666666,bg=#111111'
+      # set -g window-active-style 'fg=#B4B4B4,bg=#1a1a1a'
+
+      # set -g window-style 'bg=#111111'
+      # set -g window-active-style 'bg=#1a1a1a'
+
+      # ----- Misc -----
+
+      # reload
+      bind r source-file ~/.config/tmux/tmux.conf \; display "reloaded"
+
+      # ----- Nested Session Toggle -----
+      # Ctrl-k (no prefix) toggles outer tmux off so keys pass through to inner tmux.
+      # Press Ctrl-k again to restore outer tmux control.
+      bind-key -n C-k \
+        set-option prefix None \;\
+        set-option key-table off \;\
+        set-option status-left "#[bg=#666666,fg=#000000] #S #[bg=#1a1a1a,fg=#666666]  " \;\
+        set-option status-right "#[fg=#666666]#{pane_current_path}  #[fg=#666666]#{host}  #[bg=#666666,fg=#000000] %H:%M:%S " \;\
+        set-option window-status-current-format "#[fg=#666666] #I:#W " \;\
+        if -F '#{pane_in_mode}' 'send-keys -X cancel' \;\
+        refresh-client -S
+
+      bind-key -T off C-k \
+        set-option -u prefix \;\
+        set-option -u key-table \;\
+        set-option -u status-left \;\
+        set-option -u status-right \;\
+        set-option -u window-status-current-format \;\
+        refresh-client -S
     '';
   };
 }
