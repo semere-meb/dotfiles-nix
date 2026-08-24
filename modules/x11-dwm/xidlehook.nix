@@ -1,32 +1,14 @@
-{
-  config,
-  lib,
-  pkgs,
-  userVars,
-  ...
-}:
-{
-  home-manager.users."${userVars.username}" = {
-    services.xidlehook = {
-      enable = true;
-      detect-sleep = true;
-      not-when-fullscreen = true;
+{ pkgs, ... }:
 
-      timers = [
-        {
-          delay = 300;
-          command = "${pkgs.slock}/bin/slock";
-          canceller = "${pkgs.pipewire}/bin/pw-cli ls-output | ${pkgs.gnugrep}/bin/grep -q running";
-        }
-        {
-          delay = 600;
-          command = "systemctl suspend";
-        }
-        {
-          delay = 1500;
-          command = "systemctl hibernate";
-        }
-      ];
+{
+  environment.systemPackages = [ pkgs.xidlehook ];
+
+  systemd.user.services.xidlehook = {
+    description = "xidlehook screen locker and suspender";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.xidlehook}/bin/xidlehook --detect-sleep --not-when-fullscreen --timer 300 '${pkgs.slock}/bin/slock' '${pkgs.pipewire}/bin/pw-cli ls-output | ${pkgs.gnugrep}/bin/grep -q running' --timer 600 'systemctl suspend' '' --timer 1500 'systemctl hibernate' ''";
     };
   };
 }
