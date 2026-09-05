@@ -5,18 +5,12 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-26.05";
     };
-
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      zen-browser,
       ...
     }:
     let
@@ -36,11 +30,7 @@
         lib.nixosSystem {
           system = hostConfig.system;
           specialArgs = {
-            inherit
-              userVars
-              self
-              zen-browser
-              ;
+            inherit userVars self;
           };
           modules = [
             hostConfig.configModule

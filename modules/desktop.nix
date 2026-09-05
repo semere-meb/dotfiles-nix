@@ -35,6 +35,16 @@
   };
   security.polkit.enable = true;
   programs.dconf.enable = true;
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          gtk-theme = "Adwaita-dark";
+        };
+      };
+    }
+  ];
 
   xdg.portal = {
     enable = true;
@@ -59,5 +69,10 @@
     libnotify
     xwayland-satellite
     foot
+    firefox
+    yazi
+    p7zip
+    gnome-themes-extra
+    # adwaita-icon-theme
   ];
 }

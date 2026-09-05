@@ -30,7 +30,6 @@ allModules
       self.nixosModules.bash
       self.nixosModules.tmux
       self.nixosModules.helix
-      self.nixosModules.zen-browser
       self.nixosModules.x11-dwm
       # self.nixosModules.wayland-niri
     ];
