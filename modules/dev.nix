@@ -21,5 +21,8 @@
     nixd
     nixfmt
     gh
+    eza
+    lazygit
+    zk
   ];
 }
