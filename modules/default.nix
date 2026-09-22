@@ -14,7 +14,7 @@ in
 allModules
 // {
   x11-dwm = ./x11-dwm;
-  wayland-niri = ./wayland-niri;
+  wayland-dwl = ./wayland-dwl;
 
   desktop-suite = {
     imports = [
@@ -30,8 +30,8 @@ allModules
       self.nixosModules.bash
       self.nixosModules.tmux
       self.nixosModules.helix
-      self.nixosModules.x11-dwm
-      # self.nixosModules.wayland-niri
+      # self.nixosModules.x11-dwm
+      self.nixosModules.wayland-dwl
     ];
   };
 

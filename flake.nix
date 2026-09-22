@@ -5,6 +5,10 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-26.05";
     };
+    helium = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
