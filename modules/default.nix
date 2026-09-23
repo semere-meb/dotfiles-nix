@@ -32,6 +32,7 @@ allModules
       self.nixosModules.helix
       # self.nixosModules.x11-dwm
       self.nixosModules.wayland-dwl
+      self.nixosModules.helium
     ];
   };
 

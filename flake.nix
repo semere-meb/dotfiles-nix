@@ -15,6 +15,7 @@
     {
       self,
       nixpkgs,
+      helium,
       ...
     }:
     let
@@ -34,7 +35,7 @@
         lib.nixosSystem {
           system = hostConfig.system;
           specialArgs = {
-            inherit userVars self;
+            inherit userVars self helium;
           };
           modules = [
             hostConfig.configModule
