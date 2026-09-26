@@ -3,11 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-26.05";
-    };
-    helium = {
-      url = "github:oxcl/nix-flake-helium-browser";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
   };
 
@@ -15,7 +11,6 @@
     {
       self,
       nixpkgs,
-      helium,
       ...
     }:
     let
@@ -35,7 +30,7 @@
         lib.nixosSystem {
           system = hostConfig.system;
           specialArgs = {
-            inherit userVars self helium;
+            inherit userVars self;
           };
           modules = [
             hostConfig.configModule

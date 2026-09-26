@@ -65,14 +65,10 @@
   environment.systemPackages = with pkgs; [
     pamixer
     brightnessctl
-    wl-clipboard
     libnotify
-    xwayland-satellite
-    foot
-    firefox
     yazi
     p7zip
     gnome-themes-extra
-    # adwaita-icon-theme
+    brave-origin
   ];
 }

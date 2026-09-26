@@ -22,17 +22,11 @@ allModules
       self.nixosModules.user
       self.nixosModules.desktop
       self.nixosModules.dev
-      self.nixosModules.starship
-      self.nixosModules.git
       # self.nixosModules.gpg
       self.nixosModules.keepassxc
-      # self.nixosModules.zsh
-      self.nixosModules.bash
-      self.nixosModules.tmux
-      self.nixosModules.helix
-      # self.nixosModules.x11-dwm
+      self.nixosModules.zsh
+      # self.nixosModules.bash
       self.nixosModules.wayland-dwl
-      self.nixosModules.helium
     ];
   };
 
@@ -40,7 +34,7 @@ allModules
     imports = [
       self.nixosModules.core
       self.nixosModules.user
-      self.nixosModules.starship
+
       self.nixosModules.git
       self.nixosModules.gpg
       self.nixosModules.bash
